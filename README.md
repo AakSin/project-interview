@@ -1,8 +1,8 @@
-# Project AdHoc
+# Project Interviewer
 
 ## 1. Install Dependencies:
 
-You’ll need to have Node >= 8.10 and npm >= 5.6 on your machine which you can find [here][node]
+Youâ€™ll need to have Node >= 8.10 and npm >= 5.6 on your machine which you can find [here][node]
 
 ## 2. Running The Project:
 
