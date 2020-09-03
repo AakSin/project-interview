@@ -1,9 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
+*::-webkit-scrollbar {
+    display: none;
+  }
+
 
 *{
     margin:0px;
     padding: 0px;
+    
 }
 
 #Close{
@@ -25,7 +30,7 @@
 
 .modal-content{
 position: relative;
-top:50%;
+top : 50%; 
 left: 50%;
 transform: translate(-50%,-50%);
 width: 570px;
@@ -33,6 +38,7 @@ height: 650px;
 background: #FFFFFF;
 box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
 border-radius: 25px;
+animation : riseup .75s;
 }
 
 .Form_Inputs{
@@ -124,4 +130,9 @@ border-radius: 10px;
     text-align: center;
     color: #FEFEFE;
     transform: translate(-102.5px,0px);
+}
+
+@keyframes riseup{
+    from {top : 160%; left: 50%;}
+    to {top : 50%; left: 50%;}
 }
