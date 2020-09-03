@@ -19,7 +19,7 @@ return(
 
     <div id = "Homepage" class = "Homepage">
 
-        <span className = "Logo"><img src = {Logo} alt = "Image"/><h3 id = "Title_Head" >aD_hoc</h3></span>
+        <span className = "Logo"><img src = {Logo} alt = "Image" id = "Logo_Image"/><h3 id = "Title_Head" >aD_hoc</h3></span>
 
         <div class = "Homepage_Text_Image">
 
@@ -44,7 +44,7 @@ return(
 
             </div>
 
-            <img id = "Main_Image" src = {Background_Image} alt = "Programming Image"/>
+           <div className="Images"><img id = "Main_Image" src = {Background_Image} alt = "Programming Image"/></div> 
 
         </div>
     </div>
@@ -52,3 +52,4 @@ return(
 }
 
 export default Homepage;
+

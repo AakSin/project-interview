@@ -7,46 +7,51 @@
 }
 
 .Logo{
+margin: 1.75% 2%;;
 display: flex;
 font-family: Roboto;
 font-style: normal;
-font-size: 30px;
+font-size: 2.6041666666666665vw;
+}
+
+#Logo_Image{
+height: 4.361979166666667vw;
+width: 4.036458333333333vw;
 }
 
 #Main_Image{
 position: absolute;
-width: 625px;
-height: 750px;
-right: 33px;
-top: 27px;
+width: 40.690104166666664vw;
+height: 91.74311926605505vh;
 border-radius: 10px;
-
+right: 2.1484375vw;
+top: 3.5386631716906947vh;
 }
 
 .Homepage_Text{
 display: flex;
 flex-direction: column;
-margin: 100px 30px;
+margin: 4.5% 2%;
 }
 
 #Bolded_Homepage_Text{
 font-family: Roboto;
 font-style: normal;
 font-weight: normal;
-padding-bottom: 40px;
-width: 640px;
-height: 129.3px; 
-font-size: 50px;
-line-height: 59px;
+padding-bottom: 5.242463958060289vh;
+width: 41.666666666666664vw;
+height: 16.946264744429886vh; 
+font-size: 3.2552083333333335vw;
+line-height: 3.8411458333333335vw;
 }
 
 #Description_Homepage_Text{
-    padding-bottom: 50px;
-    width: 566px;
+    padding-bottom: 6.553079947575361vh;
+    width: 36.848958333333336vw;
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
-    font-size: 36px;
+    font-size: 2.34375vw;
     color: #7E7E7E;
     
 }
@@ -62,13 +67,12 @@ line-height: 59px;
     font-family: Roboto;
     font-style: normal;
     font-weight: bold;
-    font-size: 17px;
-    width: 205px;
-    height: 55px;
+    font-size: 1.1067708333333333vw;
+    width: 13.346354166666666vw;
+    height: 7.208387942332896vh;
     background:#29648A;
     border: solid #29648A;
     border-radius: 10px;
-    line-height: 21px;
     text-align: center;
     color: #FEFEFE;
 }
@@ -99,5 +103,211 @@ line-height: 59px;
 }
 
 
+#Create :hover{
+    background:transparent;
+}
 
 
+
+@media screen and (max-width:530px) {
+    .Logo{
+        margin: 7.75% 2%;;
+        display: flex;
+        font-family: Roboto;
+        font-style: normal;
+        font-size: 4vw;
+        padding-bottom: 40px;   
+        }
+        
+        #Logo_Image{
+        height: 8vw;
+        width: 8vw;
+        }
+        
+        #Main_Image{
+        position: absolute;
+        width: 40.690104166666664vw;
+        height: 85vh;
+        border-radius: 10px;
+        right: 2.1484375vw;
+        top: 3.5386631716906947vh;
+        }
+        
+        .Homepage_Text{
+        display: flex;
+        flex-direction: column;
+        margin: 4.5% 2%;
+        }
+        
+        #Bolded_Homepage_Text{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        padding-bottom: 5.242463958060289vh;
+        width: 50vw ;
+        height: 16.946264744429886vh; 
+        font-size: 4.5vw;
+        line-height: 3.8411458333333335vw;
+        }
+        
+        #Description_Homepage_Text{
+            padding-bottom: 6.553079947575361vh;
+            width: 36.848958333333336vw;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 4vw ;
+            color: #7E7E7E;
+            padding-bottom: 90px;
+            
+        }
+        
+        .Buttons_Homepage{
+            width: 50%;
+            display:flex;
+            justify-content: space-between;
+        }
+        
+        #Take ,
+        #Create{
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 2.3vw;
+            width: 20vw;
+            height: 7.208387942332896vh;
+            background:#29648A;
+            border: solid #29648A;
+            border-radius: 10px;
+            text-align: center;
+            color: #FEFEFE;
+        }
+        
+        .Create{
+            
+            display: flex;
+            width: auto;
+            height: 8px;
+            flex-direction: row;
+            justify-content: center;
+            justify-content: space-between;
+            padding: 0px 16px;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .Take{
+            display: flex;
+            width: auto;
+            height: 8px;
+            flex-direction: row;
+            justify-content: center;
+            justify-content: space-between;
+            padding: 0px 16px;
+            align-items: center;
+            text-align: center;
+        }
+}
+
+
+
+
+@media screen and (min-width : 530px) and  (max-width : 650px){
+    .Logo{
+        margin: 4.75% 2%;;
+        display: flex;
+        font-family: Roboto;
+        font-style: normal;
+        font-size: 4vw;
+        padding-bottom: 40px;   
+        }
+        
+        #Logo_Image{
+        height: 8vw;
+        width: 8vw;
+        }
+        
+        #Main_Image{
+        position: absolute;
+        width: 40.690104166666664vw;
+        height: 85vh;
+        border-radius: 10px;
+        right: 2.1484375vw;
+        top: 3.5386631716906947vh;
+        }
+        
+        .Homepage_Text{
+        display: flex;
+        flex-direction: column;
+        margin: 4.5% 2%;
+        }
+        
+        #Bolded_Homepage_Text{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        padding-bottom: 1vh;
+        width: 50vw ;
+        height: 16.946264744429886vh; 
+        font-size: 4.5vw;
+        line-height: 3.8411458333333335vw;
+        }
+        
+        #Description_Homepage_Text{
+            padding-bottom: 6.553079947575361vh;
+            width: 36.848958333333336vw;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 4vw ;
+            color: #7E7E7E;
+            padding-bottom: 90px;
+            
+        }
+        
+        .Buttons_Homepage{
+            width: 50%;
+            display:flex;
+            justify-content: space-between;
+        }
+        
+        #Take ,
+        #Create{
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 2.3vw;
+            width: 20vw;
+            height: 7.208387942332896vh;
+            background:#29648A;
+            border: solid #29648A;
+            border-radius: 10px;
+            text-align: center;
+            color: #FEFEFE;
+        }
+        
+        .Create{
+            
+            display: flex;
+            width: auto;
+            height: 8px;
+            flex-direction: row;
+            justify-content: center;
+            justify-content: space-between;
+            padding: 0px 16px;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .Take{
+            display: flex;
+            width: auto;
+            height: 8px;
+            flex-direction: row;
+            justify-content: center;
+            justify-content: space-between;
+            padding: 0px 16px;
+            align-items: center;
+            text-align: center;
+        }
+}

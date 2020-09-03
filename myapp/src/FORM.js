@@ -4,12 +4,17 @@ import './FORM.css'
 import X from './Images/X.png'
 
 function  FORM(){
+
+    function Close(){
+        document.querySelector('.FORMS').style.display = 'none';
+    }
+
     return(
     <div className="bg-modal">
 
         <div className="modal-content">
 
-            <a href="Homepage.js"><img id = "Close" src= {X} alt=""/></a>
+            <button onClick = {Close}><img id = "Close" src= {X} alt=""/></button>
             <div className="Form_Inputs">
 
                 <div className="Sign">
