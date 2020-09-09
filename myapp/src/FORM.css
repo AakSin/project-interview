@@ -29,37 +29,37 @@
 }
 
 .modal-content{
-position: relative;
-top : 50%; 
-left: 50%;
-transform: translate(-50%,-50%);
-width: 570px;
-height: 650px;
-background: #FFFFFF;
-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
-border-radius: 25px;
-animation : riseup .75s;
+    position: relative;
+    top : 50%; 
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 570px;
+    height: 650px;
+    background: #FFFFFF;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+    animation : riseup .75s;
 }
 
 .Form_Inputs{
-position: absolute;
-transform: translate(-50%,-50%);
-width: 420px;
-height: 500px;
-left: 50%;
-top: 50%;
-border: 2px solid #E5E5E5;
-box-sizing: border-box;
-border-radius: 10px;
+   position: absolute;
+   transform: translate(-50%,-50%);
+   width: 420px;
+   height: 500px;
+   left: 50%;
+   top: 50%;
+   border: 2px solid #E5E5E5;
+   box-sizing: border-box;
+   border-radius: 10px;
 }
 
 .Sign{
-position: absolute;
-width: 100%;
-left: 50%;
-top: 0%;
-transform: translate(-50%);
-display: flex;
+  position: absolute;
+  width: 100%;
+  left: 50%;
+  top: 0%;
+  transform: translate(-50%);
+  display: flex;
 }
 
 #Sign_up ,
@@ -89,12 +89,12 @@ display: flex;
 }
 
 .fields{
-width: 300px;
-display: flex;
-flex-direction: column;
-position:absolute;
-top: 100px;
-left: 15%;
+   width: 300px;
+   display: flex;
+   flex-direction: column;
+   position:absolute;
+   top: 100px;
+   left: 15%;
 }
 
 #fields_label{
@@ -109,9 +109,9 @@ left: 15%;
 }
 
 #fieds_input{
-border: 2px solid #E5E5E5;
-box-sizing: border-box;
-border-radius: 10px;
+   border: 2px solid #E5E5E5;
+   box-sizing: border-box;
+   border-radius: 10px;
 }
 
 #Letsgo{
