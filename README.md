@@ -1,4 +1,4 @@
-# Project Interviewer
+# Project Interview
 
 ## 1. Install Dependencies:
 
