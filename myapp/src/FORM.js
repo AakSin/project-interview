@@ -67,7 +67,7 @@ function  FORM(){
     return(
     <div className="bg-modal">
 
-        <div className="modal-content">
+        <div className="m-content">
 
             <button onClick = {Close}><img id = "Close" src= {X} alt=""/></button>
             <div className="Form_Inputs">
