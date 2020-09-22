@@ -2,8 +2,53 @@ import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import './FORM.css'
 import X from './Images/X.png'
+import fire from './config/fire.js'
+import { useHistory } from 'react-router-dom';
 
 function  FORM(){
+
+
+    let history = useHistory();
+    
+    function SigningUp(){
+        if(document.getElementById('password').value == (document.getElementById('confirmpassword').value)){
+            const auth = fire.auth();
+            auth.createUserWithEmailAndPassword(document.getElementById('email').value, document.getElementById('password').value)
+            .catch((error) => alert(error.message))
+            .then(user => {
+                if(user){
+                    document.getElementById('email').value = '';
+                    document.getElementById('password').value = '';
+                    document.getElementById('confirmpassword').value = '';
+                    console.log('Successful');
+                }
+                else{
+                    console.log('Unsuccessful');
+                }
+            })
+        }
+        else{
+            alert('Confirm Password does not match Password');
+        }
+    }
+    
+
+    function SigningIn(){
+        const auth = fire.auth();
+        auth.signInWithEmailAndPassword(document.getElementById('username').value, document.getElementById('password1').value)
+        .catch((error) => alert(error.message))
+        .then(user => {
+            if(user){
+                document.getElementById('username').value = '';
+                document.getElementById('password1').value = '';
+                console.log('Successful');
+                history.push("/");
+            }
+            else{
+                console.log('Unsuccessful');
+            }
+        })
+    }
     
 
     var up = <form className="fields">
@@ -24,7 +69,7 @@ function  FORM(){
     <input id = "fields_input" type = "password" id ="confirmpassword"></input>
     <br/>
     <br/>
-    <button id = "Letsgo" type = "submit">Let's go!</button>
+    <button id = "Letsgo" type = "button" onClick = {SigningUp}>Let's go!</button>
 </form> ;
 
 
@@ -42,7 +87,7 @@ function  FORM(){
     <br/>
     <br/>
     <br/>
-    <button id = "Letsgo" type = "submit">Let's go!</button>
+    <button id = "Letsgo" type = "button" onClick = {SigningIn}>Let's go!</button>
 </form> ;
 
 
