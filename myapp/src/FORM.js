@@ -7,8 +7,71 @@ import { useHistory } from 'react-router-dom';
 
 function  FORM(){
 
-
     let history = useHistory();
+
+    const db = fire.firestore();
+
+    function checkIfExists(User){
+        db.collection('Users').doc(User).get()
+        .then((doc)=>{
+            if(doc){
+                return true;
+            }
+            else{
+                return false;
+            }
+        })
+        .catch((error)=>alert(error.message))
+    }
+
+    function addUserName(Email , User){
+        if(!checkIfExists(User)){
+            db.collection('Users').doc(User).set(
+                {
+                    Email : Email,
+                    Username : User,
+                }
+            )
+            .then(()=>{
+                console.log('Successfully Created')
+            }
+            )
+            .catch(error => alert(error.message)
+            )
+        }
+        else {
+            alert('Username Already Taken');
+        }
+    }
+
+    function userToEmail(){
+        db.collection('Users').doc(document.getElementById('username1').value).get()
+        .then((doc)=>{
+             let email =  doc.data().Email;
+             while(email == null){
+             }
+             const auth = fire.auth();
+            auth.signInWithEmailAndPassword(email, document.getElementById('password1').value)
+            .catch((error) => alert(error.message))
+            .then(user => {
+                if(user){
+                    console.log('Successful');
+                    history.push("/");
+                }
+                else{
+                    console.log('Unsuccessful');
+                }
+            }) 
+        .catch(
+            (error)=>alert(error)
+        )
+            })    
+        .catch(
+            (error)=>alert(error.message)
+        )
+    }
+
+
     
     function SigningUp(){
         if(document.getElementById('password').value == (document.getElementById('confirmpassword').value)){
@@ -17,10 +80,11 @@ function  FORM(){
             .catch((error) => alert(error.message))
             .then(user => {
                 if(user){
+                    console.log('Successful');
+                    addUserName(document.getElementById('email').value , document.getElementById('username').value);
                     document.getElementById('email').value = '';
                     document.getElementById('password').value = '';
                     document.getElementById('confirmpassword').value = '';
-                    console.log('Successful');
                 }
                 else{
                     console.log('Unsuccessful');
@@ -33,23 +97,30 @@ function  FORM(){
     }
     
 
-    function SigningIn(){
-        const auth = fire.auth();
-        auth.signInWithEmailAndPassword(document.getElementById('username').value, document.getElementById('password1').value)
-        .catch((error) => alert(error.message))
-        .then(user => {
-            if(user){
-                document.getElementById('username').value = '';
-                document.getElementById('password1').value = '';
-                console.log('Successful');
-                history.push("/");
-            }
-            else{
-                console.log('Unsuccessful');
-            }
-        })
-    }
-    
+         /*function SigningIn(){
+            let email = userToEmail(document.getElementById('username1').value)
+            const auth = fire.auth();
+            auth.signInWithEmailAndPassword(email, document.getElementById('password1').value)
+            .catch((error) => alert(error.message))
+            .then(user => {
+                if(user){
+                    document.getElementById('username1').value = '';
+                    document.getElementById('password1').value = '';
+                    console.log('Successful');
+                    history.push("/");
+                }
+                else{
+                    console.log('Unsuccessful');
+                }
+            }) 
+        .catch(
+            (error)=>alert(error.message)
+        )
+            
+        
+    }*/
+   
+   
 
     var up = <form className="fields">
 
@@ -78,16 +149,16 @@ function  FORM(){
     <br/>
     <br/>
     <label id = "fields_label" for = "username">Choose username</label>
-    <input id = "fields_input" type = "text" id = "username"></input>
+    <input id = "fields_input" type = "text" id = "username1"></input>
     <br/>
     <br/>
     <label id = "fields_label" for = "password">Choose password</label>
-    <input id = "fields_input" type = "password" id = "password"></input>
+    <input id = "fields_input" type = "password" id = "password1"></input>
     <br/>
     <br/>
     <br/>
     <br/>
-    <button id = "Letsgo" type = "button" onClick = {SigningIn}>Let's go!</button>
+    <button id = "Letsgo" type = "button" onClick = {userToEmail}>Let's go!</button>
 </form> ;
 
 
