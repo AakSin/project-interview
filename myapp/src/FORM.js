@@ -124,41 +124,25 @@ function  FORM(){
 
     var up = <form className="fields">
 
-    <label id = "fields_label" for = "email">Enter email</label>
-    <input id = "fields_input" type = "email" id = "email"></input>
-    <br/>
-    <br/>
-    <label id = "fields_label" for = "username">Choose username</label>
-    <input id = "fields_input" type = "text" id = "username"></input>
-    <br/>
-    <br/>
-    <label id = "fields_label" for = "password">Choose password</label>
-    <input id = "fields_input" type = "password" id = "password"></input>
-    <br/>
-    <br/>
-    <label id = "fields_label" for = "confirmpassword">Confirm password</label>
-    <input id = "fields_input" type = "password" id ="confirmpassword"></input>
-    <br/>
-    <br/>
-    <button id = "Letsgo" type = "button" onClick = {SigningUp}>Let's go!</button>
+    <label className= "fields_label" for = "email">Enter email</label>
+    <input className = "fields_input" type = "email" id = "email"></input>
+    <label className= "fields_label" for = "username">Choose username</label>
+    <input className = "fields_input" type = "text" id = "username"></input>
+    <label className= "fields_label" for = "password">Choose password</label>
+    <input className = "fields_input" type = "password" id = "password"></input>
+    <label className= "fields_label" for = "confirmpassword">Confirm password</label>
+    <input className = "fields_input" type = "password" id ="confirmpassword"></input>
+    <button className="my-3" id = "Letsgo" type = "button" onClick = {SigningUp}>Let's go!</button>
 </form> ;
 
 
     var toggler = <form className="fields">
 
-    <br/>
-    <br/>
-    <label id = "fields_label" for = "username">Choose username</label>
-    <input id = "fields_input" type = "text" id = "username1"></input>
-    <br/>
-    <br/>
-    <label id = "fields_label" for = "password">Choose password</label>
-    <input id = "fields_input" type = "password" id = "password1"></input>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <button id = "Letsgo" type = "button" onClick = {userToEmail}>Let's go!</button>
+    <label className= "fields_label" for = "username">Choose username</label>
+    <input className = "fields_input" type = "text" id = "username1"></input>
+    <label className= "fields_label" for = "password">Choose password</label>
+    <input className = "fields_input" type = "password" id = "password1"></input>
+    <button className="my-3" id = "Letsgo" type = "button" onClick = {userToEmail}>Let's go!</button>
 </form> ;
 
 
@@ -185,7 +169,7 @@ function  FORM(){
 
         <div className="m-content">
 
-            <button onClick = {Close}><img id = "Close" src= {X} alt=""/></button>
+            <img onClick = {Close} id = "Close" src= {X} alt=""/>
             <div className="Form_Inputs">
 
                 <div className="Sign">

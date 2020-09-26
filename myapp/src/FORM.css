@@ -4,28 +4,25 @@
     display: none;
   }
 
-
-*{
-    margin:0px;
-    padding: 0px;
-    
-}
-
 #Close{
     width: 30px;
     height: 30px;   
     position: absolute;
     right: 20px;
     top: 20px;
+    cursor: pointer;
 }
 
 
 .bg-modal{
     position: absolute;
-    top: 0%;
+    top: 0;
     width: 100%;
     height: 100%;
     background-color:rgba(0,0,0,0.3);
+    /* Done to clean up the spacing after the html tag on rendering */
+    z-index: 1;
+    overflow: hidden;
 }
 
 .m-content{
@@ -33,32 +30,18 @@
     top : 50%; 
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 570px;
-    height: 650px;
+    width: 50vw;
+    height: 65vh;
     background: #FFFFFF;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
     border-radius: 25px;
     animation : riseup .75s;
 }
 
-.Form_Inputs{
-   position: absolute;
-   transform: translate(-50%,-50%);
-   width: 420px;
-   height: 500px;
-   left: 50%;
-   top: 50%;
-   border: 2px solid #E5E5E5;
-   box-sizing: border-box;
-   border-radius: 10px;
-}
+
 
 .Sign{
-  position: absolute;
   width: 100%;
-  left: 50%;
-  top: 0%;
-  transform: translate(-50%);
   display: flex;
 }
 
@@ -87,17 +70,30 @@
     background: #FEFEFE;
     border-radius: 0px 10px 0px 0px;
 }
+.Form_Inputs{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    width: 90%;
+    height: 500px;
+    left: 50%;
+    top: 50%;
+    border: 2px solid #E5E5E5;
+    box-sizing: border-box;
+    border-radius: 10px;
+    
+ }
 
 .fields{
-   width: 300px;
    display: flex;
    flex-direction: column;
-   position:absolute;
-   top: 100px;
-   left: 15%;
-}
+   padding: 2vh 10vw;
+   max-height: 100%;
 
-#fields_label{
+}
+.fields_label,.fieds_input{
+    margin: 2vh 0;
+}
+.fields_label{
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
@@ -135,4 +131,16 @@
 @keyframes riseup{
     from {top : 160%; left: 50%;}
     to {top : 50%; left: 50%;}
+}
+
+@media only screen and (max-width: 768px) {
+    .m-content{
+        width: 75vw;
+
+    }
+}
+@media only screen and (max-height: 768px) {
+.m-content{
+    height: 90vh;
+}
 }
