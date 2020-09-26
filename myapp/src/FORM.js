@@ -56,6 +56,8 @@ function  FORM(){
             .then(user => {
                 if(user){
                     console.log('Successful');
+                    document.getElementById('username1').value='';
+                    document.getElementById('password1').value = '';
                     history.push("/");
                 }
                 else{
@@ -83,6 +85,7 @@ function  FORM(){
                     console.log('Successful');
                     addUserName(document.getElementById('email').value , document.getElementById('username').value);
                     document.getElementById('email').value = '';
+                    document.getElementById('username').value='';
                     document.getElementById('password').value = '';
                     document.getElementById('confirmpassword').value = '';
                 }
