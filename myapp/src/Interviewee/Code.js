@@ -7,13 +7,13 @@ function Code() {
     <div className="d-flex justify-content-center align-items-center">
     <form className="w-md-100">
       <div className="form-group d-flex justify-content-center align-items-center flex-column">
-        <label htmlFor="exampleInputEmail1">Enter your interview code here</label>
+        <label className="text-center" htmlFor="exampleInputEmail1">Enter your interview code</label>
         <input
           type="text"
           className="form-control"
           placeholder="Enter interview code"
         ></input>
-        <small id="emailHelp" className="form-text text-muted">
+        <small id="emailHelp" className="form-text text-muted text-center">
           This code is provied to you by your employer.
         </small>
         <button type="submit" className="btn btn-primary my-2">

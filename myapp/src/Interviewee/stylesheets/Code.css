@@ -1,10 +1,10 @@
-html,body{
+form{
     font-size: 20px;
 }
 
 @media only screen and (min-width: 1000px) {
 
-html,body{
+form{
     font-size: 24px;
 }
 }
