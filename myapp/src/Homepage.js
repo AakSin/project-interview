@@ -1,12 +1,9 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
 import "./styles.css";
-
 import Logo from "./Images/Logo.png";
 import Background_Image from "./Images/Background_Image.png";
-import Create_Interview_Logo from "./Images/Create_Interview_Logo.png";
-import Take_Interview_Logo from "./Images/Take_Interview_Logo.png";
+import {Link} from 'react-router-dom';
 
 function Homepage() {
   function Sign_Up() {
@@ -14,14 +11,15 @@ function Homepage() {
   }
 
   return (
+
     <div className="main p-3 p-sm-5 d-flex align-items-center">
       <div className="row">
         <div className="col text-center text-md-left ">
           <div className="logo">
-            <img src={Logo} alt="Image" id="Logo_Image" />
+            <img src={Logo} alt="Logo" id="Logo_Image" />
             <span id="Title_Head">aD_hoc</span>
           </div>
-          <header class="d-flex flex-column justify-content-center my-5">
+          <header className="d-flex flex-column justify-content-center my-5">
             <h1 className="display-4">
               Ad-hoc coding interviews. <br />
               Now free for everyone
@@ -33,15 +31,19 @@ function Homepage() {
               interviews to recruit the best talent with just a few clicks.
             </p>
 
-            <div className="btn-group text-center d-flex justify-content-center">
-              <button className="btn btn-outline-primary m-2" onClick={Sign_Up}>
+            <div className="text-center">
+              <button className="btn btn-outline-primary m-2" style={{width:'40%'}} onClick={Sign_Up}>
                 <i className="fas fa-building mx-2"></i>
                 Create Interview
               </button>
-              <button className="btn btn-outline-primary m-2">
+              
+              <Link to="/code">
+              <button className="btn btn-outline-primary m-2" style={{width:'40%'}}>
                 <i className="fas fa-user-tie mx-2"></i>
                 Take Interview
               </button>
+              </Link>
+              
             </div>
           </header>
         </div>
@@ -49,11 +51,12 @@ function Homepage() {
           <img
             className="img-fluid"
             src={Background_Image}
-            alt="Programming Image"
+            alt="Programming"
           />
         </div>
       </div>
     </div>
+    
   );
 }
 
