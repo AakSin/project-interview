@@ -5,7 +5,8 @@ import FORM from "./FORM.js";
 import "./styles.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { BrowserRouter as Router, Route, Switch,withRouter  } from "react-router-dom";
-import Code from "./Interviewee/Code";
+import Code from "./Interviewee/Code.jsx";
+import Dashboard from "./Interviewee/Dashboard.jsx";
 
 ReactDOM.render(
 
@@ -13,6 +14,7 @@ ReactDOM.render(
         <div>
       <Switch>
         <Route path="/code" exact component={withRouter(Code)} />
+        <Route path="/interviewee/dashboard" exact component={withRouter(Dashboard)} />
         <Route path="/" exact component={withRouter(Homepage)} />
       </Switch>
       <div style={{ display: "none" }} className="FORMS">

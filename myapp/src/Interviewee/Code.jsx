@@ -1,5 +1,5 @@
 import React from "react";
-import "./stylesheets/Code.css";
+import "./stylesheets/Code.scss";
 
 function Code() {
   return (
