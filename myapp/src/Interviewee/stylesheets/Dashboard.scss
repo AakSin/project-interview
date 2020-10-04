@@ -1,0 +1,27 @@
+@import "../variables";
+body{
+    background-color:$bg;
+}
+#sidebar{
+    min-height:100vh;
+    min-width: 12vw;
+    background-color:#b7b8b9;
+    list-style-type: none;
+    padding: 0;
+    position: absolute;
+    left:0;
+    @media #{$md} {
+        min-width: 5vw;
+    }
+    li{
+        padding: 2vh 1vw;
+        text-align: center;
+        font-size: larger;
+        font-weight: bold;
+        color: #5c5c5c;
+    
+    }
+    .active{
+        background-color:$bg;
+    }
+}

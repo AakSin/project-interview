@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
-import ReactDOM from 'react-dom'
-import './FORM.css'
-import X from './Images/X.png'
-import fire from './config/fire.js'
+import React, { useState } from 'react';
+import './FORM.css';
+import X from './Images/X.png';
+import fire from './config/fire.js';
 import { useHistory } from 'react-router-dom';
 
 function  FORM(){
@@ -48,7 +47,7 @@ function  FORM(){
         db.collection('Users').doc(document.getElementById('username1').value).get()
         .then((doc)=>{
              let email =  doc.data().Email;
-             while(email == null){
+             while(email === null){
              }
              const auth = fire.auth();
             auth.signInWithEmailAndPassword(email, document.getElementById('password1').value)
@@ -76,7 +75,7 @@ function  FORM(){
 
     
     function SigningUp(){
-        if(document.getElementById('password').value == (document.getElementById('confirmpassword').value)){
+        if(document.getElementById('password').value === (document.getElementById('confirmpassword').value)){
             const auth = fire.auth();
             auth.createUserWithEmailAndPassword(document.getElementById('email').value, document.getElementById('password').value)
             .catch((error) => alert(error.message))
@@ -127,13 +126,13 @@ function  FORM(){
 
     var up = <form className="fields">
 
-    <label className= "fields_label" for = "email">Enter email</label>
+    <label className= "fields_label" htmlFor = "email">Enter email</label>
     <input className = "fields_input" type = "email" id = "email"></input>
-    <label className= "fields_label" for = "username">Choose username</label>
+    <label className= "fields_label" htmlFor = "username">Choose username</label>
     <input className = "fields_input" type = "text" id = "username"></input>
-    <label className= "fields_label" for = "password">Choose password</label>
+    <label className= "fields_label" htmlFor = "password">Choose password</label>
     <input className = "fields_input" type = "password" id = "password"></input>
-    <label className= "fields_label" for = "confirmpassword">Confirm password</label>
+    <label className= "fields_label" htmlFor = "confirmpassword">Confirm password</label>
     <input className = "fields_input" type = "password" id ="confirmpassword"></input>
     <button className="my-3" id = "Letsgo" type = "button" onClick = {SigningUp}>Let's go!</button>
 </form> ;
@@ -141,9 +140,9 @@ function  FORM(){
 
     var toggler = <form className="fields">
 
-    <label className= "fields_label" for = "username">Choose username</label>
+    <label className= "fields_label" htmlFor = "username">Choose username</label>
     <input className = "fields_input" type = "text" id = "username1"></input>
-    <label className= "fields_label" for = "password">Choose password</label>
+    <label className= "fields_label" htmlFor = "password">Choose password</label>
     <input className = "fields_input" type = "password" id = "password1"></input>
     <button className="my-3" id = "Letsgo" type = "button" onClick = {userToEmail}>Let's go!</button>
 </form> ;
@@ -172,7 +171,7 @@ function  FORM(){
 
         <div className="m-content">
 
-            <img onClick = {Close} id = "Close" src= {X} alt=""/>
+            <img onClick = {Close} id = "Close" src= {X} alt="Close Button"/>
             <div className="Form_Inputs">
 
                 <div className="Sign">
