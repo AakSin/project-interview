@@ -1,16 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar.jsx";
 import "./stylesheets/Dashboard.scss";
 import QuestionBox from "./QuestionBox.jsx";
+import { useParams } from "react-router-dom";
+import {fetchQuestions} from "./models/interview.js";
+
 
 export default function Dashboard() {
+  // This set of data is relevant to Firestore
+  let {interview,employee} = useParams();
+  const [questions, setQuestions] = React.useState({});
+
+  // This set of data takes care of the sidebar and UI
   let range = (n) => [...Array(n).keys()];
   const [activeIndex, setActiveIndex] = React.useState(0);
 
   const handleOnClick = (index) => {
     setActiveIndex(index);
   };
-  const [qnum, setQnum] = useState(range(4));
+  const [qnum, setQnum] = useState(0);
+
+  useEffect(() =>{
+    fetchQuestions(interview).then(response=>{
+      setQuestions(response);
+      setQnum(response.total);
+      console.log(qnum)
+    }).catch(err=>console.log(err));
+  },[qnum])
+  
   return (
     <div>
       <Navbar></Navbar>
@@ -21,7 +38,7 @@ export default function Dashboard() {
         >
           All
         </li>
-        {qnum.map((num) => {
+        {range(qnum).map((num) => {
           return (
             <li
               key={num + 1}
@@ -34,7 +51,11 @@ export default function Dashboard() {
         })}
       </ul>
       <div className="container">
-          <QuestionBox qno="1" qname="Reverse a string" testsPassed="1/4"></QuestionBox>
+      {range(qnum).map((num) => {
+          return (
+            <QuestionBox qno={num+1} qname={questions[num+1]["title"]} testsPassed={questions[num+1]["testcases"]["total"]} />
+          );
+        })}
       </div>
     </div>
   );

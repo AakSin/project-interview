@@ -14,7 +14,7 @@ ReactDOM.render(
         <div>
       <Switch>
         <Route path="/code" exact component={withRouter(Code)} />
-        <Route path="/interviewee/dashboard" exact component={withRouter(Dashboard)} />
+        <Route path="/:interview/:employee" exact component={withRouter(Dashboard)} />
         <Route path="/" exact component={withRouter(Homepage)} />
       </Switch>
       <div style={{ display: "none" }} className="FORMS">
