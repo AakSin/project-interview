@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar.jsx";
 import "./stylesheets/Dashboard.scss";
-import QuestionBox from "./QuestionBox.jsx";
-import { useParams } from "react-router-dom";
-import {fetchQuestions} from "./models/interview.js";
 
+import { } from "react-router-dom";
+import {fetchQuestions} from "./models/interview.js";
+import {  Route, Switch,useParams,useRouteMatch} from "react-router-dom";
+import QuestionPage from "./QuestionPage.jsx";
+import QuestionBox from "./QuestionBox.jsx";
 
 export default function Dashboard() {
   // This set of data is relevant to Firestore
+  let { path} = useRouteMatch();
   let {interview,employee} = useParams();
   const [questions, setQuestions] = React.useState({});
 
@@ -24,7 +27,6 @@ export default function Dashboard() {
     fetchQuestions(interview).then(response=>{
       setQuestions(response);
       setQnum(response.total);
-      console.log(qnum)
     }).catch(err=>console.log(err));
   },[qnum])
   
@@ -38,8 +40,8 @@ export default function Dashboard() {
         >
           All
         </li>
-        {range(qnum).map((num) => {
-          return (
+        {range(qnum).map((num) => (
+          
             <li
               key={num + 1}
               onClick={() => handleOnClick(num + 1)} // pass the index
@@ -47,15 +49,22 @@ export default function Dashboard() {
             >
               {num + 1}
             </li>
-          );
-        })}
+        ))}
       </ul>
       <div className="container">
-      {range(qnum).map((num) => {
-          return (
-            <QuestionBox qno={num+1} qname={questions[num+1]["title"]} testsPassed={questions[num+1]["testcases"]["total"]} />
-          );
-        })}
+      
+    
+            <Switch>
+              <Route exact path={path}>
+              {range(qnum).map((num) => (
+                <QuestionBox qno={num+1} qname={questions[num+1]["title"]} testsPassed={questions[num+1]["testcases"]["total"]} qlink={`/${interview}/${employee}/${num+1}`} />
+                ))}
+              </Route>
+              <Route exact path={`${path}/:num`}>
+                <QuestionPage></QuestionPage>
+              </Route>
+            </Switch>
+
       </div>
     </div>
   );
