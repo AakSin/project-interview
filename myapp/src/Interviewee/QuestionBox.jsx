@@ -12,7 +12,7 @@ export default function QuestionBox(props) {
             <span style={{color:'gray'}}>Q{props.qno}</span>
     <span>{props.qname}</span>
     <span>{props.testsPassed}</span>
-            <button className="btn btn-primary">Solve Question</button>
+            <a className="btn btn-primary" href={props.qlink}>Solve Question</a>
         </div>
     )
 }

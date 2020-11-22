@@ -1,27 +1,52 @@
-@import "../variables";
+@import "./variables";
 body{
     background-color:$bg;
 }
 #sidebar{
-    min-height:100vh;
+    min-height:90vh;
     min-width: 12vw;
     background-color:#b7b8b9;
     list-style-type: none;
     padding: 0;
-    position: absolute;
-    left:0;
+    margin-bottom: 0;
     @media #{$md} {
         min-width: 5vw;
     }
     li{
-        padding: 2vh 1vw;
         text-align: center;
+    a{  
+        display: inline-block;
         font-size: larger;
         font-weight: bold;
+        padding: 2vh 0;
+        width: 100%;
         color: #5c5c5c;
-    
+    }
+    a:hover{
+        color: #5c5c5c;
+        text-decoration: none;
+    }
     }
     .active{
         background-color:$bg;
     }
+}
+main{
+    margin:2vh 2vw;
+    width:100%;
+}
+.info{
+    min-height: 90vh;
+}
+.form-check-input{
+    margin-top:0.4rem !important;
+}
+.nav-item{
+    a{
+        color:black;
+    }
+}
+.nav-pills .nav-link.active{
+    background-color: white;
+    color:black;
 }
