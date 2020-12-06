@@ -8,6 +8,7 @@ require("codemirror/mode/clike/clike");
 
 export default function CodeBox() {
   const [title, setTitle] = useState("Select a language");
+  const [code,setCode]=useState("Enter your solution");
   let lang;
   switch (title) {
     case "C++":
@@ -61,13 +62,15 @@ export default function CodeBox() {
         />
       </div>
       <CodeMirror
-        value="Enter your solution"
+        value={code}
         options={{
           mode: lang,
           theme: "material",
           lineNumbers: true,
         }}
-        onChange={(editor, data, value) => {}}
+        onChange={(editor, data, value) => {
+          setCode(value);
+        }}
       />
     </div>
   );
