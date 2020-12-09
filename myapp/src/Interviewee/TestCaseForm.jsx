@@ -1,46 +1,25 @@
 import React from "react";
-import { Form, Button } from "react-bootstrap";
-export default function TestCaseForm() {
-  let code=`
-a=8
-b=6
-print(a+b)
-`
-  const handleSubmit = (event) => {
-
-    fetch("https://cors-anywhere.herokuapp.com/https://project-interview-api.herokuapp.com/", {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        code
-      })
-    })
-    .then(response => response.json())
-    .then(data => console.log(data));
-    event.preventDefault();
-  };
+import { Form} from "react-bootstrap";
+export default function TestCaseForm(props) {
+  
 
   return (
     <div>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="formBasicEmail">
+      <Form>
+        <Form.Group>
           <Form.Label>Input</Form.Label>
-          <Form.Control type="email" placeholder="Input" />
+          <Form.Control plaintext readOnly type="text" placeholder={props.cases? props.cases.input : ""} />
         </Form.Group>
-        <Form.Group controlId="formBasicPassword">
+        <Form.Group>
           <Form.Label>Expected</Form.Label>
-          <Form.Control type="password" placeholder="Expected" />
+          <Form.Control plaintext readOnly type="text" placeholder={props.cases? props.cases.output : ""} />
         </Form.Group>
-        <Form.Group controlId="formBasicPassword">
+        <Form.Group>
           <Form.Label>Your Output</Form.Label>
-          <Form.Control type="password" placeholder="Your Output" />
+          <Form.Control plaintext readOnly as="textarea" type="text" placeholder={props.output} rows={3} />
         </Form.Group>
 
-        <Button variant="primary" type="submit">
-          Run Test
-        </Button>
+
       </Form>
     </div>
   );

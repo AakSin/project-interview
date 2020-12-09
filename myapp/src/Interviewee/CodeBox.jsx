@@ -1,14 +1,17 @@
 import "codemirror/lib/codemirror.css";
 import "codemirror/theme/material.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Dropdown, DropdownButton, Form } from "react-bootstrap";
 import { UnControlled as CodeMirror } from "react-codemirror2";
 require("codemirror/mode/python/python");
 require("codemirror/mode/clike/clike");
 
-export default function CodeBox() {
+export default function CodeBox(props) {
   const [title, setTitle] = useState("Select a language");
   const [code,setCode]=useState("Enter your solution");
+  useEffect(()=>{
+    props.passParent(code)
+  },[code])
   let lang;
   switch (title) {
     case "C++":
@@ -62,7 +65,7 @@ export default function CodeBox() {
         />
       </div>
       <CodeMirror
-        value={code}
+        value="Enter your solution"
         options={{
           mode: lang,
           theme: "material",

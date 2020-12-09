@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, {useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import CodeBox from "./CodeBox";
 import { Tabs, Tab, Form, Button } from "react-bootstrap";
@@ -6,9 +6,13 @@ import TestCases from "./TestCases.jsx";
 
 export default function QuestionPage(props) {
   let { number } = useParams();
+  const [code,setCode]=useState("");
   useEffect(() => {
     props.onUpdateIndex(parseInt(number));
   });
+  let passParent=(childCode)=>{
+    setCode(childCode)
+  }
   return (
     <div className="row">
       <div className="col-4 p-4 info" style={{ backgroundColor: "white" }}>
@@ -26,12 +30,12 @@ export default function QuestionPage(props) {
       </div>
       <div className="col-8 px-2">
         <div >
-          <CodeBox></CodeBox>
+          <CodeBox passParent={passParent}></CodeBox>
         </div>
         <div>
           <Tabs defaultActiveKey="Test Cases">
             <Tab eventKey="Test Cases" title="Test Cases">
-              <TestCases />
+              <TestCases cases={props.questions[number] ? props.questions[number].testcases.cases : ""} code={code}/>
             </Tab>
             <Tab eventKey="Custom Input" title="Custom Input">
               <Form style={{backgroundColor:"white"}} className="p-5">
