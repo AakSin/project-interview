@@ -35,7 +35,7 @@ export default function QuestionPage(props) {
         <div>
           <Tabs defaultActiveKey="Test Cases">
             <Tab eventKey="Test Cases" title="Test Cases">
-              <TestCases cases={props.questions[number] ? props.questions[number].testcases.cases : ""} code={code}/>
+              <TestCases cases={props.questions[number] ? props.questions[number].testcases.cases : ""} code={code} interview={props.interview} interviewee={props.employee} number={number}/>
             </Tab>
             <Tab eventKey="Custom Input" title="Custom Input">
               <Form style={{backgroundColor:"white"}} className="p-5">

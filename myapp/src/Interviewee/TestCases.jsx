@@ -1,18 +1,20 @@
 import React,{useState,useEffect} from "react";
 import { Tab, Row, Col, Nav, Button } from "react-bootstrap";
 import TestCaseForm from "./TestCaseForm";
+import {updateCode, verifySolution} from "./models/interviewee.js";
 
 export default function TestCases(props) {
   let code = props.code;
   let input=props.cases[0] ? props.cases[0].input : "";
   let expected=props.cases[0] ? props.cases[0].output : "";
   const [output,setOutput]=useState("Your Output");
-  const [isCorrect,setIsCorrect]=useState(false)
+  const [isCorrect,setIsCorrect]=useState({})
   useEffect(()=>{
-    setIsCorrect(output===expected)
+    setIsCorrect({...isCorrect,1:output===expected});
   },[output])
+    updateCode(props.interview,props.interviewee,code);
+    // verifySolution(props.interview,props.interviewee,"0","1")
   const [loading,setLoading]=useState(false)
-  
   
   const handleSubmit = (event) => {
     setLoading(true);
@@ -48,7 +50,7 @@ export default function TestCases(props) {
           <Col sm={2} lg={1} className="pr-0 pl-3">
             <Nav variant="pills" className="flex-column">
               <Nav.Item>
-                <Nav.Link eventKey="first"><i className={"fas fa-check-circle  mr-2 text-success "+(isCorrect?"d-inline":"d-none")}></i>1</Nav.Link>
+                <Nav.Link eventKey="first"><i className={"fas fa-check-circle  mr-2 text-success "+(isCorrect[1]?"d-inline":"d-none")}></i>1</Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link eventKey="second">2</Nav.Link>

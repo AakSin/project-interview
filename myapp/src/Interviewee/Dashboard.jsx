@@ -60,7 +60,7 @@ export default function Dashboard() {
                 ))}
               </Route>
               <Route exact path={`${path}/:number`}>
-                <QuestionPage onUpdateIndex={(number)=>setActiveIndex(number)} questions={questions}></QuestionPage>
+                <QuestionPage onUpdateIndex={(number)=>setActiveIndex(number)} questions={questions} interview={interview} employee={employee}></QuestionPage>
               </Route>
             </Switch>
 
