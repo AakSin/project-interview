@@ -18,9 +18,7 @@ export function updateCode(interview,interviewee,code){
 export function verifySolution(interview,interviewee,qno,cno){
     let docRef = db.collection("Interviews").doc(interview).collection("interviewees").doc(interviewee);
     return docRef.update({
-        qno:{
-            cno:true
-        }
+        ["testcases."+qno+"."+cno]:true
     })
     .then(function() {
         console.log("Document successfully updated!");

@@ -40,13 +40,13 @@ export default function QuestionPage(props) {
             <Tab eventKey="Custom Input" title="Custom Input">
               <Form style={{backgroundColor:"white"}} className="p-5">
                 <Form.Group controlId="formBasicEmail">
-                  <Form.Label>Input</Form.Label>
-                  <Form.Control type="email" placeholder="Enter email" />
+                  <Form.Label>Custom Input</Form.Label>
+                  <Form.Control type="string" placeholder="Enter Custom Input" />
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPassword">
                   <Form.Label>Expected Output</Form.Label>
-                  <Form.Control type="password" placeholder="Password" />
+                  <Form.Control type="text" placeholder="Enter Expected Output" />
                 </Form.Group>
                 <Button variant="primary" type="submit" className="mr-2">
                   Run Test Case

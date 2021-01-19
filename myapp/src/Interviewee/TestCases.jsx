@@ -11,9 +11,15 @@ export default function TestCases(props) {
   const [isCorrect,setIsCorrect]=useState({})
   useEffect(()=>{
     setIsCorrect({...isCorrect,1:output===expected});
-  },[output])
     updateCode(props.interview,props.interviewee,code);
-    // verifySolution(props.interview,props.interviewee,"0","1")
+  },[output])
+  useEffect(()=>{
+    if(isCorrect[1]){
+      verifySolution(props.interview,props.interviewee,"1","0");
+    }
+  },[isCorrect])
+    
+    
   const [loading,setLoading]=useState(false)
   
   const handleSubmit = (event) => {
