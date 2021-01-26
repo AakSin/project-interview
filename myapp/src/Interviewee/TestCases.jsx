@@ -44,12 +44,18 @@ export default function TestCases(props) {
       b[i] = output[i] === expected[i];
     }
     setIsCorrect(b);
-    updateCode(props.interview, props.interviewee, code);
+    updateCode(props.interview, props.interviewee, number,code);
   }, [output]);
   useEffect(() => {
-    if (isCorrect[1]) {
-      verifySolution(props.interview, props.interviewee, number, "0");
-    }
+    for(let i=0;i<Object.keys(isCorrect).length;i++){
+      if (isCorrect[i]) {
+        
+        verifySolution(props.interview, props.interviewee, number, i, true);
+      }else{
+        verifySolution(props.interview, props.interviewee, number, i, false);
+      }
+   }
+ 
   }, [isCorrect]);
 
   const [loading, setLoading] = useState(false);
@@ -64,29 +70,7 @@ export default function TestCases(props) {
     <div>
       <Tab.Container id="left-tabs-example" defaultActiveKey="0">
         <Row>
-          {/* <Col sm={2} lg={1} className="pr-0 pl-3">
-            <Nav variant="pills" className="flex-column">
-              <Nav.Item>
-                <Nav.Link eventKey="first"><i className={"fas fa-check-circle  mr-2 text-success "+(isCorrect[1]?"d-inline":"d-none")}></i>1</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link eventKey="second">2</Nav.Link>
-              </Nav.Item>
-            </Nav>
-          </Col>
-          <Col sm={10} lg={11} className="pl-0">
-            <Tab.Content style={{ backgroundColor: "white" }} className="p-4">
-              <Tab.Pane eventKey="first">
-                <TestCaseForm cases={props.cases[0]} output={output?output:"Your Output"} />
-              </Tab.Pane>
-              <Tab.Pane eventKey="second">
-                <TestCaseForm />
-              </Tab.Pane>
-              <Button variant="primary" type="submit"  onClick={loading?null:handleSubmit} disabled={loading}>
-                Run Test
-              </Button>
-            </Tab.Content>
-          </Col> */}
+         
           <Col sm={2} lg={1} className="pr-0 pl-3">
             <Nav variant="pills" className="flex-column">
               {Object.keys(props.cases).map((i) => (

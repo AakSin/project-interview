@@ -1,10 +1,10 @@
 import fire from '../../config/fire.js';
 let db = fire.firestore();
 
-export function updateCode(interview,interviewee,code){
+export function updateCode(interview,interviewee,qno,code){
     let docRef = db.collection("Interviews").doc(interview).collection("interviewees").doc(interviewee);
     return docRef.update({
-        code
+        [qno+".code"]:code
     })
     .then(function() {
         console.log("Document successfully updated!");
@@ -15,10 +15,10 @@ export function updateCode(interview,interviewee,code){
     });
 }
 
-export function verifySolution(interview,interviewee,qno,cno){
+export function verifySolution(interview,interviewee,qno,cno,bool){
     let docRef = db.collection("Interviews").doc(interview).collection("interviewees").doc(interviewee);
     return docRef.update({
-        ["testcases."+qno+"."+cno]:true
+        [qno+"."+cno]:bool
     })
     .then(function() {
         console.log("Document successfully updated!");
@@ -29,31 +29,3 @@ export function verifySolution(interview,interviewee,qno,cno){
     });
 }
 
-export function runCode(event,code,input1,input2){
-
-    //     fetch(
-    //       "https://project-interview-api.herokuapp.com/",
-    //       {
-    //         method: "POST",
-    //         headers: {
-    //           "Content-Type": "application/json",
-    //         },
-    //         body: JSON.stringify({
-    //           code,
-    //           first:input,
-    //           second:""
-    //         }),
-    //       }
-    //     )
-    //       .then((response) => response.json())
-    //       .then((data) => {
-    //         setOutput(data.output)
-    //         setLoading(false)
-    //       })
-    //       .catch(()=>{
-    //         setLoading(false)
-    //       });
-    //     event.preventDefault();
-        
-    //   };
-}
