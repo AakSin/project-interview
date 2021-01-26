@@ -56,7 +56,7 @@ export default function Dashboard() {
             <Switch>
               <Route exact path={path}>
               {range(qnum).map((num) => (
-                <QuestionBox qno={num+1} qname={questions[num+1]["title"]} testsPassed={questions[num+1]["testcases"]["total"]} qlink={`/${interview}/${employee}/${num+1}`} />
+                <QuestionBox key={num} qno={num+1} qname={questions[num+1]["title"]} testsPassed={questions[num+1]["testcases"]["total"]} qlink={`/${interview}/${employee}/${num+1}`} />
                 ))}
               </Route>
               <Route exact path={`${path}/:number`}>

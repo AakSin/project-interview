@@ -28,3 +28,32 @@ export function verifySolution(interview,interviewee,qno,cno){
         console.error("Error updating document: ", error);
     });
 }
+
+export function runCode(event,code,input1,input2){
+
+    //     fetch(
+    //       "https://project-interview-api.herokuapp.com/",
+    //       {
+    //         method: "POST",
+    //         headers: {
+    //           "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify({
+    //           code,
+    //           first:input,
+    //           second:""
+    //         }),
+    //       }
+    //     )
+    //       .then((response) => response.json())
+    //       .then((data) => {
+    //         setOutput(data.output)
+    //         setLoading(false)
+    //       })
+    //       .catch(()=>{
+    //         setLoading(false)
+    //       });
+    //     event.preventDefault();
+        
+    //   };
+}
