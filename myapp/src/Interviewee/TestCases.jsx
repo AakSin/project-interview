@@ -12,30 +12,6 @@ export default function TestCases(props) {
   let input = Object.keys(props.cases).map((i) => props.cases[i].input);
   let expected = Object.keys(props.cases).map((i) => props.cases[i].output);
 
-  async function runCode(inputs) {
-    setLoading(true);
-    let a = [];
-    for (const i of inputs) {
-      const response = await fetch(
-        "https://project-interview-api.herokuapp.com/",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            code,
-            first: i,
-          }),
-        }
-      );
-      const answer = await response.json();
-
-      a.push(answer.output);
-    }
-    setLoading(false);
-    return a;
-  }
 
   useEffect(() => {
     setIsCorrect({});
@@ -61,8 +37,8 @@ export default function TestCases(props) {
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = (event) => {
-    runCode(input).then(a=>{
-      setOutput(a);
+    props.runCode(input).then(answer=>{
+      setOutput(answer);
     });
     event.preventDefault();
   };

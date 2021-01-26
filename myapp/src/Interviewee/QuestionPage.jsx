@@ -5,13 +5,49 @@ import { Tabs, Tab, Form, Button } from "react-bootstrap";
 import TestCases from "./TestCases.jsx";
 
 export default function QuestionPage(props) {
+  const [loading, setLoading] = useState(false);
   let { number } = useParams();
   const [code,setCode]=useState("");
+  const [customInp,setCustomInp]=useState("");
+  const [customOut,setCustomOut]=useState("")
   useEffect(() => {
     props.onUpdateIndex(parseInt(number));
   });
   let passParent=(childCode)=>{
     setCode(childCode)
+  }
+  const handleChange=(event)=>{
+    setCustomInp(event.target.value);
+  }
+  const handleSubmit=(event)=>{
+    runCode([customInp]).then((answer)=>{
+      setCustomOut(answer[0]);
+    });
+    event.preventDefault();
+  }
+  async function runCode(inputs) {
+    setLoading(true);
+    let a = [];
+    for (const i of inputs) {
+      const response = await fetch(
+        "https://project-interview-api.herokuapp.com/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            code,
+            first: i,
+          }),
+        }
+      );
+      const answer = await response.json();
+
+      a.push(answer.output);
+    }
+    setLoading(false);
+    return a;
   }
   return (
     <div className="row">
@@ -35,24 +71,21 @@ export default function QuestionPage(props) {
         <div>
           <Tabs defaultActiveKey="Test Cases">
             <Tab eventKey="Test Cases" title="Test Cases">
-              <TestCases cases={props.questions[number] ? props.questions[number].testcases.cases : ""} number={number} code={code} interview={props.interview} interviewee={props.employee} number={number}/>
+              <TestCases runCode={runCode} cases={props.questions[number] ? props.questions[number].testcases.cases : ""} number={number} code={code} interview={props.interview} interviewee={props.employee} number={number}/>
             </Tab>
             <Tab eventKey="Custom Input" title="Custom Input">
               <Form style={{backgroundColor:"white"}} className="p-5">
                 <Form.Group controlId="formBasicEmail">
                   <Form.Label>Custom Input</Form.Label>
-                  <Form.Control type="string" placeholder="Enter Custom Input" />
+                  <Form.Control type="string" placeholder="Enter Custom Input" onChange={handleChange}/>
                 </Form.Group>
 
-                <Form.Group controlId="formBasicPassword">
-                  <Form.Label>Expected Output</Form.Label>
-                  <Form.Control type="text" placeholder="Enter Expected Output" />
+                <Form.Group>
+                  <Form.Label> Output</Form.Label>
+                  <Form.Control readOnly plaintext type="text" placeholder={customOut} />
                 </Form.Group>
-                <Button variant="primary" type="submit" className="mr-2">
+                <Button variant="primary" type="submit" className="mr-2" disabled={loading} onClick={loading ? null : handleSubmit}>
                   Run Test Case
-                </Button>
-                <Button variant="success" type="submit" className="mr-2">
-                  Add Test Case
                 </Button>
               </Form>
             </Tab>
