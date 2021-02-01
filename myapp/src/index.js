@@ -14,7 +14,6 @@ ReactDOM.render(
       <Router>
         <div>
       <Switch>
-        <Route path="/code" exact component={withRouter(Code)} />
         <Route path="/:interview/:employee" component={withRouter(Dashboard)} />
         <Route path="/" exact component={withRouter(Homepage)} />
       </Switch>
