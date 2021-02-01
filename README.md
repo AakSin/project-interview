@@ -2,6 +2,8 @@
 
 We’ve created the world’s first platform to create free, secure, automated, and timed coding interviews to recruit the best talent with just a few clicks.
 
+Project made using React, [React-Bootstrap](https://react-bootstrap.github.io/), Firebase.
+
 ## Installation
 Clone repo
 ```bash

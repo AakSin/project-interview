@@ -5,16 +5,17 @@ import { Tabs, Tab, Form, Button } from "react-bootstrap";
 import TestCases from "./TestCases.jsx";
 
 export default function QuestionPage(props) {
-  const [loading, setLoading] = useState(false);
-  let { number } = useParams();
-  const [code,setCode]=useState("");
-  const [customInp,setCustomInp]=useState("");
+  const [loading, setLoading] = useState(false); //false when code hasn't been set to run
+  let { number } = useParams(); //question number
+  const [code,setCode]=useState(""); // code written by user
+  const [customInp,setCustomInp]=useState(""); 
   const [customOut,setCustomOut]=useState("")
   useEffect(() => {
-    props.onUpdateIndex(parseInt(number));
+    props.onUpdateIndex(parseInt(number)); //sets active question number on sidebar
   });
+  // function to receive code from child CodeBox component
   let passParent=(childCode)=>{
-    setCode(childCode)
+    setCode(childCode) 
   }
   const handleChange=(event)=>{
     setCustomInp(event.target.value);
@@ -37,8 +38,10 @@ export default function QuestionPage(props) {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            code,
+            code, // expands to code:code using ES6
             first: i,
+            // uncomment next line if you want a second input. J will need to be defined. API can handle 2 inputs right now.
+            // second: j
           }),
         }
       );
@@ -70,9 +73,13 @@ export default function QuestionPage(props) {
         </div>
         <div>
           <Tabs defaultActiveKey="Test Cases">
-            <Tab eventKey="Test Cases" title="Test Cases">
+            
+            {/* tab for Firebase testcases */}
+            <Tab eventKey="Test Cases" title="Test Cases" >
               <TestCases runCode={runCode} cases={props.questions[number] ? props.questions[number].testcases.cases : ""} number={number} code={code} interview={props.interview} interviewee={props.employee} number={number}/>
             </Tab>
+
+            {/* tab for custom inputs testcases */}
             <Tab eventKey="Custom Input" title="Custom Input">
               <Form style={{backgroundColor:"white"}} className="p-5">
                 <Form.Group controlId="formBasicEmail">

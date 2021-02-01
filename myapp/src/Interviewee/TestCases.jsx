@@ -4,18 +4,17 @@ import TestCaseForm from "./TestCaseForm";
 import { updateCode, verifySolution } from "./models/interviewee.js";
 
 export default function TestCases(props) {
-  let code = props.code;
-  let number = props.number;
-  const [output, setOutput] = useState([]);
-  const [isCorrect, setIsCorrect] = useState({});
-  const [caseNo, setCaseNo] = useState(0);
-  let input = Object.keys(props.cases).map((i) => props.cases[i].input);
-  let expected = Object.keys(props.cases).map((i) => props.cases[i].output);
-
+  let code = props.code; // code typed by interviwee
+  let number = props.number; // question number
+  const [output, setOutput] = useState([]); // output obtained from API
+  const [isCorrect, setIsCorrect] = useState({}); // validate whether questions are correct or not
+  const [caseNo, setCaseNo] = useState(0); // selected testcase
+  let input = Object.keys(props.cases).map((i) => props.cases[i].input); // input fetched from firebase
+  let expected = Object.keys(props.cases).map((i) => props.cases[i].output); // expected output fetched from firebase
 
   useEffect(() => {
-    setIsCorrect({});
-    let b = {};
+    setIsCorrect({}); // resets setIsCorrect everytime new output fetched
+    let b = {}; // temporary variable
     for (let i = 0; i < output.length; i++) {
       b[i] = output[i] === expected[i];
     }
@@ -25,16 +24,14 @@ export default function TestCases(props) {
   useEffect(() => {
     for(let i=0;i<Object.keys(isCorrect).length;i++){
       if (isCorrect[i]) {
-        
         verifySolution(props.interview, props.interviewee, number, i, true);
       }else{
         verifySolution(props.interview, props.interviewee, number, i, false);
       }
    }
- 
   }, [isCorrect]);
 
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false); //false when code hasn't been set to run
 
   const handleSubmit = (event) => {
     props.runCode(input).then(answer=>{
@@ -44,7 +41,7 @@ export default function TestCases(props) {
   };
   return (
     <div>
-      <Tab.Container id="left-tabs-example" defaultActiveKey="0">
+      <Tab.Container defaultActiveKey="0">
         <Row>
          
           <Col sm={2} lg={1} className="pr-0 pl-3">

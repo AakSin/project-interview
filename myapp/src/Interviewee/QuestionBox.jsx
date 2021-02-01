@@ -1,3 +1,4 @@
+// This file is the small box that displays on the dashboard for each question
 import React from 'react'
 
 export default function QuestionBox(props) {
