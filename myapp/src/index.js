@@ -6,7 +6,7 @@ import "./styles.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { BrowserRouter as Router, Route, Switch,withRouter  } from "react-router-dom";
 import Dashboard from "./Interviewee/Dashboard.jsx";
-import QuestionPage from "./Interviewee/QuestionPage.jsx";
+
 
 ReactDOM.render(
 
