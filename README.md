@@ -21,7 +21,7 @@ Run the project
 ```bash
 npm start
 ```
-The project will now be live on http://localhost:3000/
+The project will now be live on http://localhost:3000/ .
 
 ## Usage
 
