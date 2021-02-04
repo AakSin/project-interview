@@ -14,7 +14,7 @@ export default function TestCases(props) {
 
   useEffect(() => {
     setIsCorrect({}); // resets setIsCorrect everytime new output fetched
-    let b = {}; // temporary variable
+    let b = {}; // temporary object which will contain information whether solution is correct or not
     for (let i = 0; i < output.length; i++) {
       b[i] = output[i] === expected[i];
     }

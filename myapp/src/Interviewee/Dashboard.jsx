@@ -33,6 +33,7 @@ export default function Dashboard() {
       <Navbar></Navbar>
       <div className="d-flex">
         <ul id="sidebar">
+          {/* generating sidebar boxes */}
           <li
             onClick={() => setActiveIndex(0)} // pass the index
             className={activeIndex === 0 ? "active" : ""}

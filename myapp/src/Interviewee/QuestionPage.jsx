@@ -28,6 +28,7 @@ export default function QuestionPage(props) {
   }
   async function runCode(inputs) {
     setLoading(true);
+    // a is an empty array which will contain all the returned outputs
     let a = [];
     for (const i of inputs) {
       const response = await fetch(
